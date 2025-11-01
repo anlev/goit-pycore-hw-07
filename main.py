@@ -7,7 +7,7 @@ from handlers import (
     show_all,
     add_birthday,
     show_birthday,
-    birthdays, edit_phone, remove_phone,
+    birthdays,
 )
 
 def main():
