@@ -16,10 +16,17 @@ class Record:
         return f"Contact: {self.name.value}, phones: {phones_str}, birthday: {birthday_str}"
 
     def add_phone(self, phone_number: str):
-        if self.find_phone(phone_number) is not None:
+        phone = self.find_phone(phone_number)
+        if phone is not None:
             raise ValueError("Phone number already exists.")
         phone = Phone(phone_number)
         self.phones.append(phone)
+
+    def remove_phone(self, phone_number: str):
+        phone = self.find_phone(phone_number)
+        if phone is None:
+            raise ValueError("Phone number not found.")
+        self.phones.remove(phone)
 
     def find_phone(self, phone_number: str):
         return next((phone for phone in self.phones if phone.value == phone_number), None)
@@ -29,13 +36,6 @@ class Record:
         if phone is None:
             raise ValueError("Phone number not found.")
         phone.value = new_phone_number
-
-    def remove_phone(self, phone_number: str):
-        for index, phone in enumerate(self.phones):
-            if phone.value == phone_number:
-                self.phones.pop(index)
-                return
-        raise ValueError("Phone number not found.")
 
     def add_birthday(self, birthday_str: str):
         self.birthday = Birthday(birthday_str)

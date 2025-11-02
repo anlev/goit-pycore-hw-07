@@ -2,8 +2,7 @@ from address_book import AddressBook
 from handlers import (
     add_contact,
     show_phone,
-    edit_phone,
-    remove_phone,
+    change_phone,
     show_all,
     add_birthday,
     show_birthday,
@@ -27,14 +26,11 @@ def main():
         elif command == "add":
             print(add_contact(args, book))
 
-        elif command == "show-phone":
+        elif command == "change":
+            print(change_phone(args, book))
+
+        elif command == "phone":
             print(show_phone(args, book))
-
-        elif command == "edit-phone":
-            print(edit_phone(args, book))
-
-        elif command == "remove-phone":
-            print(remove_phone(args, book))
 
         elif command == "all":
             print(show_all(book))

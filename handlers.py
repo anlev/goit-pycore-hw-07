@@ -63,9 +63,9 @@ def show_phone(args, book: AddressBook):
 
 
 @input_error
-def edit_phone(args, book: AddressBook):
+def change_phone(args, book: AddressBook):
     if len(args) < 3:
-        raise IndexError("Usage: edit-phone [name] [old_phone] [new_phone]")
+        raise IndexError("Usage: change [name] [old_phone] [new_phone]")
 
     name, old_phone, new_phone, *_ = args
 
@@ -74,21 +74,6 @@ def edit_phone(args, book: AddressBook):
         raise KeyError("Contact not found.")
 
     record.edit_phone(old_phone, new_phone)
-    return "Phone number updated."
-
-
-@input_error
-def remove_phone(args, book: AddressBook):
-    if len(args) < 2:
-        raise IndexError("Usage: remove-phone [name] [phone]")
-
-    name, phone, *_ = args
-
-    record = book.find(name)
-    if record is None:
-        raise KeyError("Contact not found.")
-
-    record.remove_phone(phone)
     return "Phone number updated."
 
 
